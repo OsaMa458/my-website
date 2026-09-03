@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://usamaecom.site/sitemap.xml
