@@ -30,3 +30,40 @@
 .supplier-table th:first-child,.supplier-table td:first-child{position:sticky;left:0;z-index:2;background:#fff}
 .supplier-table th:first-child{background:#f5f8fb;z-index:3}
 @media(max-width:760px){.modal{padding:10px}.modal-panel{max-height:92vh;border-radius:16px}.modal-head{padding:14px 16px}.modal-body{padding:14px}.sheet-scroll-hint{align-items:flex-start;flex-direction:column;gap:4px}.sheet-scroll-hint .arrow{white-space:normal}.sheet-table{min-width:1000px}}
+
+/* Interactive portfolio workbook: two-axis navigation + accessible zoom */
+.sheet-wrap{
+  position:relative;
+  width:100%;
+  max-height:54vh;
+  overflow:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  touch-action:auto;
+  cursor:grab;
+  scrollbar-width:auto;
+  scrollbar-color:#7f96ae #edf2f7;
+}
+.sheet-wrap.is-dragging{cursor:grabbing;user-select:none}
+.sheet-wrap::-webkit-scrollbar{width:14px;height:14px}
+.sheet-wrap::-webkit-scrollbar-track{background:#edf2f7;border-radius:10px}
+.sheet-wrap::-webkit-scrollbar-thumb{background:#7f96ae;border:3px solid #edf2f7;border-radius:10px}
+.sheet-wrap::-webkit-scrollbar-thumb:hover{background:#607994}
+.sheet-table{width:max-content;min-width:100%;border-collapse:separate;border-spacing:0}
+.sheet-table th,.sheet-table td{border-right:1px solid var(--l);border-bottom:1px solid var(--l);background:#fff}
+.sheet-table thead th{position:sticky;top:0;z-index:4;background:#f3f7fb;box-shadow:0 1px 0 var(--l)}
+.sheet-table th:first-child,.sheet-table td:first-child{position:sticky;left:0;z-index:3;background:#fff;box-shadow:1px 0 0 var(--l)}
+.sheet-table thead th:first-child{z-index:6;background:#f3f7fb}
+.sheet-scroll-hint{line-height:1.5}
+.sheet-controls{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin:8px 0 0}
+.sheet-controls button{border:1px solid var(--l);background:#fff;color:var(--n);border-radius:9px;min-width:36px;height:34px;padding:0 10px;font-weight:700;cursor:pointer}
+.sheet-controls button:hover{border-color:#9bb8d8;background:#f4f8fc}
+.sheet-controls button:focus-visible{outline:3px solid #1377f83d;outline-offset:2px}
+.sheet-controls [data-zoom-label]{min-width:48px;text-align:center;font-size:12px;font-weight:700;color:var(--m)}
+.sheet-error{padding:18px;background:#fff4f4;border:1px solid #f0caca;border-radius:12px;color:#7b2d2d}
+.sheet-error p{margin:6px 0 0}
+@media(max-width:760px){
+  .sheet-wrap{max-height:52vh}
+  .sheet-controls{justify-content:flex-start}
+  .sheet-scroll-hint .arrow{font-size:11px}
+}
